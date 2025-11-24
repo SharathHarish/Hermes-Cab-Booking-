@@ -1,16 +1,46 @@
-# Node (Next.js)
-frontend/node_modules/
+# ---------------------------
+# Frontend (Next.js)
+# ---------------------------
+
+# Ignore build output
 frontend/.next/
-frontend/.env.local
+frontend/out/
 
-# Python (FastAPI)
-backend/env/
+# Node modules
+frontend/node_modules/
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ---------------------------
+# Backend (FastAPI)
+# ---------------------------
+
+# Ignore Python compiled files
 backend/__pycache__/
-backend/.env
+backend/**/*.pyc
 
+# Ignore virtual environment
+backend/env/
+backend/venv/
+
+# ---------------------------
 # OS junk
+# ---------------------------
+
 .DS_Store
 Thumbs.db
 
-# Logs
+# ---------------------------
+# Editor junk
+# ---------------------------
+.vscode/
+.idea/
+
+# ---------------------------
+# Other
+# ---------------------------
+
 *.log
