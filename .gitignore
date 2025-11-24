@@ -1,0 +1,24 @@
+# Frontend build + deps
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Backend virtual env ONLY
+backend/env/
+backend/venv/
+
+# Python cache (safe to ignore)
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor junk
+.vscode/
+.idea/
+
+# Logs
+*.log
