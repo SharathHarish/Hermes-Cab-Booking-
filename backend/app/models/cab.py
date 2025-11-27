@@ -1,10 +1,9 @@
 from sqlmodel import SQLModel, Field
 from typing import Optional
 
-class Driver(SQLModel, table=True):
+class Cab(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
-    phone: str
-    license_number: str
-    rating: float = 5.0
+    cab_number: str
+    cab_type: str   # sedan, suv, mini, bike
+    driver_id: int = Field(foreign_key="driver.id")
     is_available: bool = True
