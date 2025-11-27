@@ -1,15 +1,12 @@
-from sqlmodel import SQLModel, Field
-from typing import Optional
-import uuid
-from datetime import datetime
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from app.database import Base
 
-class Ride(SQLModel, table=True):
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()), primary_key=True)
-    rider_id: str
-    driver_id: Optional[str] = None
-    pickup_location: str
-    drop_location: str
-    distance_km: float
-    fare: float
-    status: str = "requested"  # requested / accepted / ongoing / completed / cancelled
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+class Ride(Base):
+    __tablename__ = "rides"
+    id = Column(Integer, primary_key=True, index=True)
+    passenger_id = Column(Integer, index=True)
+    driver_id = Column(Integer, index=True, nullable=True)
+    pickup_location = Column(String)
+    drop_location = Column(String)
+    status = Column(String, default="booked")
+    estimated_fare = Column(Float)

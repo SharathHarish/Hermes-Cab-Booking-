@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import auth,drivers,cabs
+from app.routes import auth,drivers,cabs,rides
 
 app = FastAPI(title="Cab Booking API")
 
@@ -20,7 +20,7 @@ app.add_middleware(
 # ROUTERS
 # -------------------------------
 app.include_router(auth.router)
-
+app.include_router(rides.router)
 app.include_router(drivers.router)
 app.include_router(cabs.router)
 
