@@ -1,11 +1,11 @@
-from sqlmodel import SQLModel, Field
-from typing import Optional
-import uuid
+from sqlalchemy import Column, Integer, String
+from app.database import Base
 
-class User(SQLModel, table=True):
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()), primary_key=True)
-    supabase_uid: str
-    name: str
-    email: str
-    phone: Optional[str] = None
-    role: str  # rider / driver
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    email = Column(String, unique=True, index=True, nullable=False)
+    password = Column(String, nullable=False)
+    role = Column(String, default="customer")  # customer, driver, admin

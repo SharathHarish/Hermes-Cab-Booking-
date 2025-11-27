@@ -3,11 +3,11 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 import os
 from dotenv import load_dotenv
+from app.database import Base
+from app.models.user import User  # import all models to include in migrations
+
 
 load_dotenv()  # Load .env so SUPABASE_DB_URL is available
-
-from app.database import SQLModel
-from app.models.user import User
 from app.models.driver import Driver
 from app.models.ride import Ride
 from app.models.rating import Rating
@@ -19,8 +19,11 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+    target_metadata = Base.metadata
+
 # Get database URL from .env
 database_url = os.getenv("SUPABASE_DB_URL")
+
 if not database_url:
     raise Exception("SUPABASE_DB_URL is missing from .env")
 
@@ -28,7 +31,7 @@ if not database_url:
 config.set_main_option("sqlalchemy.url", database_url)
 
 # IMPORTANT: Set correct metadata so Alembic sees tables
-target_metadata = SQLModel.metadata
+target_metadata = Base.metadata
 
 
 def run_migrations_offline():

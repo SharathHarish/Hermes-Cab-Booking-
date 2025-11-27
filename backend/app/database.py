@@ -1,12 +1,21 @@
-from sqlmodel import SQLModel, create_engine
-import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
 DATABASE_URL = os.getenv("SUPABASE_DB_URL")
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL)
 
-def init_db():
-    SQLModel.metadata.create_all(engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
