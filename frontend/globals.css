@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OPTIONAL: Global golden-white theme */
+body {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.gold-text {
+  color: #d4af37;
+}
+
+.gold-bg {
+  background-color: #d4af37;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  padding: 20px;
+}
