@@ -1,6 +1,6 @@
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
-import Navbar from "@/components/Navbar";
+import ClientLayout from "@/components/ClientLayout";
 
 export const metadata = {
   title: "Hermes Cab Booking",
@@ -10,13 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900">
-        {/* Global Navbar */}
-        <Navbar />
-
-        <main className="min-h-screen px-6 py-6 max-w-6xl mx-auto">
+      <body>
+        <ClientLayout>
           {children}
-        </main>
+        </ClientLayout>
       </body>
     </html>
   );

@@ -1,41 +1,32 @@
 "use client";
-import { useState } from "react";
 
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import Link from "next/link";
 
-  const handleLogin = async () => {
-    const res = await fetch("http://localhost:8000/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await res.json();
-    console.log(data);
-  };
-
+export default function HomePage() {
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Login</h1>
+    <main className="min-h-screen bg-[#FDF7E3] text-[#3A2E1E]">
+        {/* ⭐ White Banner Placeholder */}
+      <section className="mt-16 w-full">
+        <div className="max-w-6xl mx-auto h-72 md:h-96 rounded-2xl bg-white shadow-md border border-[#E6E0CC]">
+    
+      
 
-      <input
-        style={{ display: "block", marginBottom: 10 }}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
+        <p className="max-w-2xl text-lg mt-4 text-[#6A563A]">
+          Experience luxury, speed, and reliability — inspired by the Greek god of swift travel.
+          Your premium cab service awaits.
+        </p>
 
-      <input
-        style={{ display: "block", marginBottom: 10 }}
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-
-      <button onClick={handleLogin}>Login</button>
-    </div>
+        {/* CTA Buttons */}
+        <div className="flex gap-4 mt-10 flex-wrap justify-center">
+          <Link
+            href="/login"
+            className="px-6 py-3 bg-[#C89A00] text-white rounded-lg shadow-lg hover:bg-[#A67A00] transition"
+          >
+            🚖 Book a Cab
+          </Link>
+</div>
+        </div>
+      </section>
+    </main>
   );
 }

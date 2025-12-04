@@ -2,23 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* OPTIONAL: Global golden-white theme */
+/* Body background and default text */
 body {
-  background: #ffffff;
-  color: #1a1a1a;
+  @apply bg-gold-light text-text-default font-sans;
 }
 
-.gold-text {
-  color: #d4af37;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-gold-dark font-serif;
 }
 
-.gold-bg {
-  background-color: #d4af37;
+/* Links */
+a {
+  @apply text-accent hover:text-accent-dark transition-colors;
 }
 
+/* Buttons */
+.btn {
+  @apply px-4 py-2 rounded bg-accent text-neutral-light font-semibold shadow-gold hover:bg-accent-dark;
+}
+
+/* Cards */
 .card {
-  background: #111;
-  border: 1px solid #d4af37;
-  border-radius: 12px;
-  padding: 20px;
+  @apply p-6 bg-neutral-light rounded-xl shadow-lg;
 }

@@ -7,7 +7,8 @@ const menu = [
   { label: "Dashboard", link: "/dashboard" },
   { label: "Cabs", link: "/cabs" },
   { label: "Rides", link: "/rides" },
-  { label: "Drivers", link: "/drivers" }
+  { label: "Drivers", link: "/drivers" },
+  { label: "Logout", link: "/logout" }
 ];
 
 export default function Sidebar() {
